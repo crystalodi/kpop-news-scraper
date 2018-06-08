@@ -10,7 +10,8 @@ var ArticleSchema = new Schema({
     articleLink: {
        trim: true,
        type: String,
-       required: "Link is required"
+       required: "Link is required",
+       unique: true
     },
     summary: {
         trim: true,
@@ -35,7 +36,7 @@ var ArticleSchema = new Schema({
 
 ArticleSchema.methods.buildArticleURL = function() {
     var secondPart = this.articleLink;
-    this.articleLink = "http://allkpop.com/" + secondPart;
+    this.articleLink = "http://allkpop.com" + secondPart;
     return this.articleLink;
 }
 var Article = mongoose.model("Article", ArticleSchema);

@@ -49,12 +49,11 @@ app.get("/scrape", function(req, res){
             result.summary = $(element).find(".text").children("p").text();
             var newPost = new Article(result);
             newPost.buildArticleURL();
-            console.log(newPost);
             db.Article.create(newPost).then(function(article){
                 console.log(article);
             })
             .catch(function(err){
-                return res.json(err);
+                console.log(err);
             })
         })
         
