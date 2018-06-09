@@ -26,19 +26,23 @@ var ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    imageURL: {
+        type: String,
+        default: "http://via.placeholder.com/350x150"
+    },
     notes: [
         {
           type: Schema.Types.ObjectId,
           ref: "Note"
         }
       ]
-})
+});
 
 ArticleSchema.methods.buildArticleURL = function() {
     var secondPart = this.articleLink;
     this.articleLink = "http://allkpop.com" + secondPart;
     return this.articleLink;
-}
+};
 var Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article;
