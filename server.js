@@ -31,7 +31,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get("/", function(req, res){
-    db.Article.find({isSaved: false})
+    db.Article.find({isSaved: false}).sort({dateCreated: 'desc'})
     .then(function(articles){
         res.render("index", {data: articles});
     })
@@ -39,7 +39,26 @@ app.get("/", function(req, res){
         res.render("index", {data: err});
     });
 });
-app.get("/scrape", function(req, res){
+
+app.get("/saved", function(req, res){
+    db.Article.find({isSaved: true}).sort({dateCreated: 'desc'})
+    .then(function(articles){
+        res.render("index", {data: articles});
+    })
+    .catch(function(err){
+        res.render("index", {data: err});
+    });
+});
+
+app.put("/save/:id", function(req, res){
+    db.Article.updateOne({_id: mongoose.Types.ObjectId(req.params.id)}, {isSaved: true}).then(function(data){
+        res.json(data)
+    }).catch(function(err){
+        throw err;
+    })
+})
+
+app.post("/scrape", function(req, res){
     request("http://allkpop.com/", function(error, response, html){
         var $ = cheerio.load(html);
         $("div#article-headline-left article.list").each(function(i, element){
@@ -48,19 +67,18 @@ app.get("/scrape", function(req, res){
             result.articleLink = $(element).find(".text").children("h1").children("a").attr("href") || "";
             result.summary = $(element).find(".text").children("p").text() || "";
             result.imageURL = $(element).find(".image").children("a").children("img").attr("data-cfsrc") || "";
-            console.log(result);
             var newPost = new Article(result);
             newPost.buildArticleURL();
             db.Article.create(newPost).then(function(article){
                 console.log(article);
             })
             .catch(function(err){
-                console.log(err.message);
+                console.log("Duplicate key or validation error");
             });
         });
         
     });
-    res.redirect("/");
+    res.status(200).send();
 });
 
 app.listen(PORT, function(){

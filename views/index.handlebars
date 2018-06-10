@@ -1,5 +1,35 @@
-<section class="section center">
+<section class="section">
     <div class="container">
-        
+        <div class="row">
+            <div class="col m12">
+                <h1>Articles</h1>
+            </div>
+        </div>
+        <div class="row">
+            {{#each data}}
+            <div class="col m6">
+                <div class="card large">
+                    <div class="card-image">
+                        <img src="{{this.imageURL}}"/>
+                        <div>
+                            <span class="card-title">
+                           {{this.title}}
+                        </span>
+                        </div>
+
+                    </div>
+                    <div class="card-content">
+                        <p>{{this.summary}}</p>
+                    </div>
+                    <div class="card-action">
+                        {{#unless isSaved}}
+                            <a href="#" data-id="{{this._id}}" class="save-article">Save Article</a>
+                        {{/unless}}
+                            <a href={{this.articleLink}} target="_blank">View Article</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
     </div>
 </section>
