@@ -7,7 +7,7 @@ var request = require("request");
 var db = require("./models");
 var Article = db.Article;
 var Note = db.Note;
-var PORT = 3000 || process.env.PORT;
+var PORT = process.env.PORT || 3000;
 var app = express();
 
 app.use(express.static("public"));
