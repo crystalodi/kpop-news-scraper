@@ -11,25 +11,35 @@
                 <div class="card large">
                     <div class="card-image">
                         <img src="{{this.imageURL}}"/>
-                        <div>
-                            <span class="card-title">
+                        <span class="card-title">
                            {{this.title}}
                         </span>
-                        </div>
-
                     </div>
                     <div class="card-content">
                         <p>{{this.summary}}</p>
+                        <a href="{{this.articleLink}}" target="_blank">View Article</a>
                     </div>
                     <div class="card-action">
                         {{#unless isSaved}}
                             <a href="#" data-id="{{this._id}}" class="save-article">Save Article</a>
                         {{/unless}}
-                            <a href={{this.articleLink}} target="_blank">View Article</a>
+                        {{#if isSaved}}
+                            <a href="#" data-id="{{this._id}}" class="remove-saved-article">Remove From Saved</a>
+                        {{/if}}
+                           <a data-id="{{this._id}}" class="view-article-note modal-trigger" data-target="modal1">Add a Note</a>
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
     </div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Notes for aricle id <span id="article-id"></span></h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-green btn-flat">Close</button>
+        </div>
+  </div>
 </section>

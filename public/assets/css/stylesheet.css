@@ -1,3 +1,4 @@
-.scrape-articles:hover {
+.scrape-articles:hover,
+.view-article-note:hover {
     cursor: pointer;
 }

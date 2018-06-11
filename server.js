@@ -80,7 +80,18 @@ app.post("/scrape", function(req, res){
     });
     res.status(200).send();
 });
-
+app.post("/newnote/:id", function(req, res){
+    db.Note.create(req.body)
+    .then(function(dbNote) {
+      return db.Article.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, { $push: { notes: dbNote._id } }, { new: true });
+    })
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+})
 app.listen(PORT, function(){
     console.log("now listening on port " + PORT);
 });

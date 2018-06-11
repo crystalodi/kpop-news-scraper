@@ -1,10 +1,11 @@
 $(function(){
     $('.button-collapse').sideNav();
+    $('.modal').modal();
     $(".scrape-articles").on("click", function(){
         $.ajax("/scrape", {
             type: "POST"
         }).then(function(data){
-            window.location.href = "/"
+            window.location.assign('/')
         })
     })
 
@@ -13,7 +14,7 @@ $(function(){
         $.ajax(strURL, {
             type: "PUT"
         }).then(function(data){
-            window.location.href = "/"
+            window.location.assign('/')
         })
     })
 });
