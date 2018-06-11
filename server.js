@@ -80,6 +80,17 @@ app.post("/scrape", function(req, res){
     });
     res.status(200).send();
 });
+
+app.get("/article/:id", function(req, res){
+    db.Article.findOne({_id: mongoose.Types.ObjectId(req.params.id)})
+    .populate("notes")
+    .then(function(article){
+      res.json(article)
+    })
+    .catch(function(err){
+      res.json(err)
+    })
+})
 app.post("/newnote/:id", function(req, res){
     db.Note.create(req.body)
     .then(function(dbNote) {
