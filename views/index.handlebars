@@ -35,8 +35,24 @@
     </div>
     <div id="modal1" class="modal">
         <div class="modal-content">
-            <h4>Notes for aricle id <span id="article-id"></span></h4>
+            <h6>Notes for article id <span id="article-id"></span></h6>
             <p>A bunch of text</p>
+            <div class="divider">
+            </div>
+            <div class="modal-notes-content">
+                a
+            </div>
+            <form class="add-note-form">
+                <div class="input-field">
+                    <input type="text" id="comment-name" required>
+                    <label for="comment-name">Name</label>
+                </div>
+                <div class="input-field">
+                    <textarea id="comment-note" class="materialize-textarea" required></textarea>
+                    <label for="comment-note">Note</label>
+                </div>
+                <button class="btn pink lighten-2 white-text" id="note-submit-button">Add Note</button>
+            </form>
         </div>
         <div class="modal-footer">
             <button class="modal-close waves-effect waves-green btn-flat">Close</button>

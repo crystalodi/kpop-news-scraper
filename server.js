@@ -94,7 +94,7 @@ app.get("/article/:id", function(req, res){
 app.post("/newnote/:id", function(req, res){
     db.Note.create(req.body)
     .then(function(dbNote) {
-      return db.Article.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, { $push: { notes: dbNote._id } }, { new: true });
+      return db.Article.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, { $push: { notes: dbNote._id } }, { new: true }).populate("notes");
     })
     .then(function(dbArticle) {
       res.json(dbArticle);
