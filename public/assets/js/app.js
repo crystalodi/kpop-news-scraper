@@ -5,7 +5,7 @@ $(function(){
         $.ajax("/scrape", {
             type: "POST"
         }).then(function(data){
-            reloadPage("/")
+            //reloadPage("/")
         })
     })
 
@@ -14,7 +14,7 @@ $(function(){
         $.ajax(strURL, {
             type: "PUT"
         }).then(function(data){
-            reloadPage("/")
+            //reloadPage("/")
         })
     })
 
@@ -35,7 +35,9 @@ $(function(){
             note: $("#comment-note").val()
         }
         $.post(strURL, noteParams, function(data){
-            renderNotes(data.notes)
+            $("#comment-name").val("")
+            $("#comment-note").val("")
+            $('.modal').modal('close')
         })
     })
 
@@ -45,6 +47,19 @@ $(function(){
         })
     }
     function renderNotes(notes) {
-
+        var notesContainer = $("#modal-notes-content")
+        notesContainer.empty();
+        var notesCollectionHTML = "<ul class='collection'>"
+        if(notes.length === 0) {
+            notesCollectionHTML += "<li class='collection-item center'>" + "No Notes Yet." + "</li>"
+        } else {
+            for(var i = 0; i < notes.length; i++) {
+                notesCollectionHTML += "<li class='collection-item center'>" +
+                "<span class='title'>" + notes[i].name + "</span><br>"
+                + notes[i].note + "</li>"
+            }
+        }
+        notesCollectionHTML += "</ul>"
+        notesContainer.html(notesCollectionHTML)
     }
 });
