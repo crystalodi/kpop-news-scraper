@@ -2,19 +2,38 @@ $(function(){
     $('.button-collapse').sideNav();
     $('.modal').modal();
     $(".scrape-articles").on("click", function(){
-        $.ajax("/scrape", {
-            type: "POST"
-        }).then(function(data){
-            //reloadPage("/")
+        $.when(
+            $.get("/scrape", function(data){
+                console.log(data)
+            }),
+            $.get("/", function(data){
+                console.log(data)
+            })
+        ).done(function(data){
+            reloadPage("/");
         })
     })
-
     $(".save-article").on("click", function(){
         var strURL = "/save/" + $(this).data("id");
         $.ajax(strURL, {
-            type: "PUT"
+            type: "PUT",
+            data: {
+                isSaved: true
+            }
         }).then(function(data){
-            //reloadPage("/")
+            reloadPage("/")
+        })
+    })
+
+    $(".remove-saved-article").on("click", function(){
+        var strURL = "/save/" + $(this).data("id");
+        $.ajax(strURL, {
+            type: "PUT",
+            data: {
+                isSaved: false
+            }
+        }).then(function(data){
+            reloadPage("/saved")
         })
     })
 
@@ -42,9 +61,9 @@ $(function(){
     })
 
     function reloadPage(pageToReload) {
-        $.get(pageToReload, function(data){
-            console.log("page to reload")
-        })
+        location.href = pageToReload, true
+        console.log(location.href)
+       // location.reload(true)
     }
     function renderNotes(notes) {
         var notesContainer = $("#modal-notes-content")

@@ -51,14 +51,14 @@ app.get("/saved", function(req, res){
 });
 
 app.put("/save/:id", function(req, res){
-    db.Article.updateOne({_id: mongoose.Types.ObjectId(req.params.id)}, {isSaved: true}).then(function(data){
+    db.Article.updateOne({_id: mongoose.Types.ObjectId(req.params.id)}, {isSaved: req.body.isSaved}).then(function(data){
         res.json(data)
     }).catch(function(err){
         throw err;
     })
 })
 
-app.post("/scrape", function(req, res){
+app.get("/scrape", function(req, res){
     request("http://allkpop.com/", function(error, response, html){
         var $ = cheerio.load(html);
         $("div#article-headline-left article.list").each(function(i, element){
@@ -78,7 +78,7 @@ app.post("/scrape", function(req, res){
         });
         
     });
-    res.status(200).send();
+    res.send(true);
 });
 
 app.get("/article/:id", function(req, res){
