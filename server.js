@@ -10,6 +10,7 @@ var Note = db.Note;
 var PORT = process.env.PORT || 3000;
 var app = express();
 
+
 app.use(express.static("public"));
 
 // parse application/x-www-form-urlencoded
@@ -17,6 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next()
+});
 
 //express handlebars
 app.engine("handlebars", exphbs({
@@ -78,7 +86,7 @@ app.get("/scrape", function(req, res){
         });
         
     });
-    res.send(true);
+    res.redirect("/")
 });
 
 app.get("/article/:id", function(req, res){

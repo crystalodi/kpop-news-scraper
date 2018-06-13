@@ -2,15 +2,10 @@ $(function(){
     $('.button-collapse').sideNav();
     $('.modal').modal();
     $(".scrape-articles").on("click", function(){
-        $.when(
-            $.get("/scrape", function(data){
-                console.log(data)
-            }),
-            $.get("/", function(data){
-                console.log(data)
-            })
-        ).done(function(data){
-            reloadPage("/");
+        $.ajax("/scrape", {
+            type: "GET"
+        }).done(function(data){
+            reloadPage("/")
         })
     })
     $(".save-article").on("click", function(){
