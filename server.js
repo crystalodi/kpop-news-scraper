@@ -41,7 +41,7 @@ mongoose.connect(MONGODB_URI);
 app.get("/", function(req, res){
     db.Article.find({isSaved: false}).sort({dateCreated: 'desc'})
     .then(function(articles){
-        res.render("index", {data: articles});
+        res.render("index", {data: articles, title: "Articles"});
     })
     .catch(function(err){
         res.render("index", {data: err});
@@ -51,7 +51,7 @@ app.get("/", function(req, res){
 app.get("/saved", function(req, res){
     db.Article.find({isSaved: true}).sort({dateCreated: 'desc'})
     .then(function(articles){
-        res.render("index", {data: articles});
+        res.render("index", {data: articles, title: "Saved Articles"});
     })
     .catch(function(err){
         res.render("index", {data: err});

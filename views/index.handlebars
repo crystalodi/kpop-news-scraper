@@ -1,6 +1,6 @@
     <ul class="side-nav" id="side-nav-menu">
         <li>
-            <a class="scrape-articles" href="#">Scrape New Articles</a>
+            <a class="scrape-articles">Scrape New Articles</a>
         </li>
         <li>
             <a href="/saved" class="saved-articles">Saved Articles</a>
@@ -10,7 +10,7 @@
         </li>
     </ul>
     <div class="navbar-fixed">
-        <nav>
+        <nav class="pink lighten-2">
             <div class="container">
                 <div class="nav-wrapper">
                     <a class="brand-logo" href="#">Kpop News</a>
@@ -19,7 +19,7 @@
                     </a>
                     <ul class="right hide-on-med-and-down" id="main-menu">
                         <li>
-                            <a class="scrape-articles" href="#">Scrape New Articles</a>
+                            <a class="scrape-articles">Scrape New Articles</a>
                         </li>
                         <li>
                             <a href="/saved" class="saved-articles">Saved Articles</a>
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col m12">
-                <h1>Articles</h1>
+                <h3 class="center pink-text lighten-2">{{title}}</h3>
             </div>
         </div>
         <div class="row">
@@ -44,13 +44,14 @@
             <div class="col m6">
                 <div class="card large">
                     <div class="card-image">
-                        <img src="{{this.imageURL}}"/>
-                        <span class="card-title">
-                           {{this.title}}
+                        <img src="{{this.imageURL}}"/> 
+                        <span class="card-title overlay">
+                        {{this.title}}
                         </span>
                     </div>
                     <div class="card-content">
                         <p>{{this.summary}}</p>
+                        <br>
                         <a href="{{this.articleLink}}" target="_blank">View Article</a>
                     </div>
                     <div class="card-action">
@@ -58,9 +59,9 @@
                             <a href="#" data-id="{{this._id}}" class="save-article">Save Article</a>
                         {{/unless}}
                         {{#if isSaved}}
-                            <a href="#" data-id="{{this._id}}" class="remove-saved-article">Remove From Saved</a>
+                            <a href="#" data-id="{{this._id}}" class="remove-saved-article">Remove Article</a>
                         {{/if}}
-                           <a data-id="{{this._id}}" class="view-article-note modal-trigger" data-target="modal1">Add a Note</a>
+                           <a data-id="{{this._id}}" class="view-article-note modal-trigger" data-target="modal1">View Notes</a>
                     </div>
                 </div>
             </div>
@@ -75,17 +76,19 @@
             <div id="modal-notes-content">
                 
             </div>
-            <form class="add-note-form">
-                <div class="input-field">
-                    <input type="text" id="comment-name" required>
-                    <label for="comment-name">Name</label>
-                </div>
-                <div class="input-field">
-                    <textarea id="comment-note" class="materialize-textarea" required></textarea>
-                    <label for="comment-note">Note</label>
-                </div>
-                <button class="btn pink lighten-2 white-text" id="note-submit-button">Add Note</button>
-            </form>
+            <section class="section">
+                <form class="add-note-form">
+                    <div class="input-field">
+                        <input type="text" id="comment-name" required>
+                        <label for="comment-name">Name</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea id="comment-note" class="materialize-textarea" required></textarea>
+                        <label for="comment-note">Note</label>
+                    </div>
+                    <button class="btn pink lighten-2 white-text" id="note-submit-button">Add Note</button>
+                </form>
+            </section>
         </div>
         <div class="modal-footer">
             <button class="modal-close waves-effect waves-green btn-flat">Close</button>

@@ -5,7 +5,10 @@ $(function(){
         $.ajax("/scrape", {
             type: "GET"
         }).done(function(data){
-            reloadPage("/")
+            setTimeout(function(){
+                reloadPage("/")
+            }, 1000)
+            
         })
     })
     $(".save-article").on("click", function(){
@@ -42,7 +45,6 @@ $(function(){
     })
     $(".add-note-form").on("submit", function(e){
         e.preventDefault()
-        console.log($("#note-submit-button").attr("data-id"))
         var strURL = "/newnote/" + $("#note-submit-button").attr("data-id")
         var noteParams = {
             name: $("#comment-name").val(),
@@ -69,7 +71,7 @@ $(function(){
         } else {
             for(var i = 0; i < notes.length; i++) {
                 notesCollectionHTML += "<li class='collection-item center'>" +
-                "<span class='title'>" + notes[i].name + "</span><br>"
+                "<span class='title'>" + notes[i].name + " said:</span><br>"
                 + notes[i].note + "</li>"
             }
         }
