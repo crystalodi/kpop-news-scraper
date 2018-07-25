@@ -106,10 +106,19 @@ Open a web browser and type http://localhost:3000. Your should see this:
 ## How to Use
 
 ### Scrape for New Articles
+To scrape for new articles, click the Scrape New Articles Link in the navbar. Scrape New Articles will send a get request to `/scrape` endpoint in server.js and insert any new articles into the Articles collection. After scrape is complete, the app page will refresh to display the new articles.
 
-### Add Comment to Article
+![Scrape Articles Nav Menu Item](images/navbar_1.png) <!-- .img height="50%" width="50%" -->
 
 ### Save an Article
+To Save an article, click the link to the Home Page in the navbar. Find an article and below the image and short summary associated with the article, click the link that says Save Article. This will will trigger a put request to `/save/:id` where `:id` is equal to the unique id that was created when the article was scraped and inserted into the Articles collection. It sets the isSaved field to true. The page will refresh and the article will not appear on the home page.
+
+![Save Article](images/navbar_3.png)
+
+![Save Article Link](images/save_an_article.jpg) <!-- .img height="25%" width="25%" -->
+
+
+### Add Comment to Article
 
 ### Remove a Saved Article
 
