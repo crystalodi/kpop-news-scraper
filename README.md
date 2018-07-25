@@ -101,6 +101,7 @@ npm start
 ```
 
 Open a web browser and type http://localhost:3000. Your should see this:
+<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/home.jpg">
 
 
 ## How to Use
@@ -121,10 +122,10 @@ To Save an article, click the link to the Home Page in the navbar. Find an artic
 
 ### View and Add Comment(s) to Article
 
+<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/save_an_article.jpg" width="50%" height="100%">
+
 <img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/view_add_comment.png" width="50%">
 
-
-<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/save_an_article.jpg" width="50%" height="100%">
 
 ### Remove a Saved Article
 
