@@ -76,6 +76,8 @@ Install the following programs if they aren't on your local machine.
 
 Node (LTS) - http://nodejs.org
 
+MongoDB (Community Edition) - https://www.mongodb.com/download-center?jmp=nav#community
+
 
 ### Installing
 
@@ -97,6 +99,9 @@ Start the server and application
 ```
 npm start
 ```
+
+Open a web browser and type http://localhost:3000. Your should see this:
+
 
 ## How to Use
 
