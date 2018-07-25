@@ -128,6 +128,12 @@ To Save an article, click the link to the Home Page in the navbar. Find an artic
 
 ### Remove a Saved Article
 
+<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/navbar_2.png" width="50%" height="100%">
+
+<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/saved_articles.jpg" width="50%" height="100%">
+
+<img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/remove_from_saved.jpg" width="50%" height="100%">
+
 ## Built With
 
 * [NodeJS](https://nodejs.org/) - The web framework used
