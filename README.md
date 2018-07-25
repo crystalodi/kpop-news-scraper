@@ -122,6 +122,7 @@ Open a web browser and type http://localhost:3000. Your should see this:
 * [Materialize CSS](https://materializecss.com/) - CSS Framework used to add styling to layout.
 * [Cheerio](https://www.npmjs.com/package/cheerio) - Node Package that executes jQuery from web server to scrape web site.
 * [Request](https://www.npmjs.com/package/request) - HTTP client that retrieves website HTML.
+* [Body Parser](https://www.npmjs.com/package/body-parser) - Middleware for parsing body sent for POST requests.
 
 ## Authors
 
