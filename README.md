@@ -7,65 +7,6 @@ Go [here](https://polar-depths-15878.herokuapp.com/) to view the app.
 
 ## About the Application
 
-### Folder Structure
-
-After following the steps in the Installation section, your folder should look like this:
-
-```
-kpop-news-scraper/
-  models/
-    Article.js
-    index.js
-    Note.js
-  node_modules/
-  public/
-    assets/
-        css/
-            stylesheet.css
-        js/
-            app.js
-  views/
-    layouts/
-        main.handlebars
-    index.handlebars
-  .gitignore
-  package-lock.json
-  package.json
-  README.md
-  server.js
-```
-* `models/Article.js` and `models/Note.js` contains mongoose objects that model the schema for the Articles and Note collections.
-* `public/assets/css/stylesheet.js` contains custom css for Article card and Add Note Form.
-* `public/assets/js/app.js` contains jQuery Ajax calls to end points in `server.js`.
-* `views/layouts/main.handlebars` handlebars template that renders whole page.
-* `views/index.handlebars` handlebars template that renders HTML for Saved Articles and Home Page.
-* `server.js` Contains logic to connect to mongo database. Creates mongoose collections in `models` folder. Contains following api end points:
-```
-URL: / 
-Method: GET 
-Description: Retrieves unsaved articles
-
-URL: /saved
-Method: GET 
-Description: Retrieves saved articles
-
-URL: /save/:id
-Method: PUT
-Description: Updates article document and sets `isSaved` field to true or false
-
-URL: /scrape
-Method: GET
-Description: Retrieves link to article, article image, article summary, and article title from allkpop.com
-
-URL: /article/:id
-Method: GET
-Description: Get notes added for an article
-
-URL: /newnote/:id
-Method: POST
-Description: Adds a new note and associated with article id
-```
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
@@ -102,6 +43,27 @@ npm start
 
 Open a web browser and type http://localhost:3000. Your should see this:
 <img src="https://raw.githubusercontent.com/crystalodi/kpop-news-scraper/master/images/home.jpg">
+
+
+### Folder Structure
+
+After following the steps in the Installation section, your folder should look like this:
+
+```
+├── images
+├── models
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+├── README.md
+├── server.js
+└── views
+```
+* `/models`contains mongoose objects that model the schema for the Articles and Note collections.
+* `/public` contains custom css for Article card and Add Note Form. contains jQuery Ajax calls to end points in `server.js`
+* `/views` handlebars template that renders page.
+* `server.js` Contains logic to connect to mongo database. Creates mongoose collections in `models` folder. Contains api endpoints to retrieve unsaved articles, get saved articles, add a comment to an article, and remove a saved article
 
 
 ## How to Use
